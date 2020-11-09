@@ -19,6 +19,7 @@
 #summon villager ~ ~1 ~ {VillagerData:{profession:farmer,level:99,type:plains},Invulnerable:1b,CustomNameVisible:1b,Tags:["talk_can","quest_want_apple","quest_want_apple_first","quest_want_hifusaibou"],Offers:{Recipes:[{buy:{id:"minecraft:paper",Count:1b,tag:{display:{Name:'{"text":"クエスト名：彼にリンゴを","color":"yellow"}',Lore:['{"text":"回数制限：なし、クエスト難易度：優しい"}','{"text":"あ～新鮮でシャキシャキしたリンゴが食べたいなぁ・・・持ってきてくれたら特別なものを上げよう"}']},HideFlags:63,Enchantments:[{id:"minecraft:protection",lvl:0s}]}},sell:{id:"minecraft:white_dye",Count:1b,tag:{display:{Name:'{"text":"報酬：田中さんの皮膚細胞","color":"yellow"}'}}}},{buy:{id:"minecraft:paper",Count:1b,tag:{display:{Name:'{"text":"クエスト名：不要な「何か」","color":"yellow"}',Lore:['{"text":"回数制限：1回、クエスト難易度：優しい"}','{"text":"いらないものがあったら持ってきて！気に入ったら引き取るよ"}']},HideFlags:63,Enchantments:[{id:"minecraft:protection",lvl:0s}]}}}]},CustomName:'{"text":"田中さん","color":"yellow"}',Inventory:[{id:"minecraft:stone",Count:1b,tag:{display:{Name:'{"text":"田中さん","color":"yellow"}'},rewardExp:0b,maxUses:9999999}}]}
 ##############################################
 
+
 ##############################################
 #スコア
 ##############################################
@@ -35,13 +36,15 @@
 #quest_want_###　　　　　　:アイテムを渡すクエストを持っていると付くタグ
 ##############################################
 
+
+
 #村人に話しかける(shift)
 ##############################################
     #スニークしているプレイヤーの範囲内に"talk_can"タグが付いていて、"talk_finish"が付いていない村人が居たら"talk"を実行
 execute as @a[scores={talk_villager=1..}] at @s if entity @e[tag=talk_can,tag=!talk_finish,limit=1,sort=nearest,distance=..4.99] run function rpg:talk_villager/talk
 ##############################################
     #スニーク検知用を0..2に納める
-scoreboard players remove @a[scores={talk_villager=1..,talk_villager=2..}] talk_villager2 1
+scoreboard players remove @a[scores={talk_villager=1..,talk_villager2=2..}] talk_villager2 1
     #スニークしていなかったら最寄りの村人の"talk_finish"タグを外してもう一度喋れるようにする
 execute if entity @a[scores={talk_villager2=..0}] run tag @e[tag=talk_finish] remove talk_finish
     #スニークしていなかったらスコアをリセット
