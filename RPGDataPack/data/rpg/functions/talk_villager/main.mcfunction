@@ -44,7 +44,7 @@
 execute as @a[scores={talk_villager=1..}] at @s if entity @e[tag=talk_can,tag=!talk_finish,limit=1,sort=nearest,distance=..4.99] run function rpg:talk_villager/talk
 ##############################################
     #スニーク検知用を0..2に納める
-scoreboard players remove @a[scores={talk_villager=1..,talk_villager2=2..}] talk_villager2 1
+scoreboard players remove @a[scores={talk_villager=2..}] talk_villager2 1
     #スニークしていなかったら最寄りの村人の"talk_finish"タグを外してもう一度喋れるようにする
 execute if entity @a[scores={talk_villager2=..0}] run tag @e[tag=talk_finish] remove talk_finish
     #スニークしていなかったらスコアをリセット
