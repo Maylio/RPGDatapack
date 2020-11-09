@@ -23,9 +23,9 @@
 ##############################################
 #スコア
 ##############################################
-#talk_villager :スニーク検知
-#talk_villager2:スニーク検知
-#talk_right    :村人右クリック検知
+#talk_villager :スニーク検知 (minecraft.custom:minecarft.sneak_time)
+#talk_villager2:スニーク検知 (minecraft.custom:minecarft.sneak_time)
+#talk_right    :村人右クリック検知 (minecraft.custom:minecraft.talked_to_villager)
 ##############################################
 #タグ
 ##############################################
