@@ -55,10 +55,10 @@ scoreboard players reset @a[scores={talk_sneak_now=..0}] talk_sneak_now
 execute as @e[tag=talk_name_different] at @s unless entity @a[distance=..5] run function rpg:talk_villager/talk_reset
 
 #名前が非表示されている村人の近くにプレイヤーが居たら名前を表示にする
-execute as @e[tag=talk_can] at @s if entity @a[distance=..8] run data modify entity @s CustomNameVisible set value 1b
+execute as @e[tag=talk_can] unless data entity @s {CustomNameVisible:1b} at @s if entity @a[distance=..8] run data modify entity @s CustomNameVisible set value 1b
 
 #名前が表示されている村人の近くにプレイヤーが居なかったら名前を非表示にする
-execute as @e[tag=talk_can,nbt={CustomNameVisible:1b}] at @s unless entity @a[distance=..10] run data modify entity @s CustomNameVisible set value 0b
+execute as @e[tag=talk_can] unless data entity @s {CustomNameVisible:0b} at @s unless entity @a[distance=..10] run data modify entity @s CustomNameVisible set value 0b
 
 #村人を右クリックしたときに名前をリセット
 execute as @a[scores={talk_right=1..}] at @s run function rpg:talk_villager/talk_reset_right
