@@ -21,6 +21,8 @@ execute at @e[tag=talker] run tp @e[tag=talker] ~ ~ ~ facing entity @s
 execute as @e[tag=talker,tag=!talk_finish] run loot replace entity @s villager.1 loot rpg:talk_villager/villager_nomal
 #"talker"タグがついていて"talk_finish"タグが付いていない村人の名前に2番インベントリに入っているアイテムの名前を代入
 execute as @e[tag=talker,tag=!talk_finish] run data modify entity @s CustomName set from entity @s Inventory[1].tag.display.Name
+#"talker"タグがついていて"talk_finish"タグが付いていない村人の2番インベントリを削除
+replaceitem entity @e[tag=talker,tag=!talk_finish] villager.1 air
 ##############################################
 #もしもプレイヤーが"talk_quest:"want_apple""のタグがついたアイテムを持っていて、村人に"quest_want_apple"タグがついていたら特殊なイベントを起こす
 execute if entity @e[tag=talker,tag=!talk_finish,tag=quest_want_apple] as @s[nbt={SelectedItem:{tag:{talk_quest:"want_apple"}}}] run function rpg:talk_villager/quest/want_apple

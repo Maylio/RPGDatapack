@@ -23,8 +23,8 @@
 ##############################################
 #スコア
 ##############################################
-#talk_villager :スニーク検知 (minecraft.custom:minecarft.sneak_time)
-#talk_villager2:スニーク検知 (minecraft.custom:minecarft.sneak_time)
+#talk_sneak_tick :スニーク検知 (minecraft.custom:minecarft.sneak_time)
+#talk_sneak_now:スニーク検知 (minecraft.custom:minecarft.sneak_time)
 #talk_right    :村人右クリック検知 (minecraft.custom:minecraft.talked_to_villager)
 ##############################################
 #タグ
@@ -41,15 +41,15 @@
 #村人に話しかける(shift)
 ##############################################
     #スニークしているプレイヤーの範囲内に"talk_can"タグが付いていて、"talk_finish"が付いていない村人が居たら"talk"を実行
-execute as @a[scores={talk_villager=1..}] at @s if entity @e[tag=talk_can,tag=!talk_finish,limit=1,sort=nearest,distance=..4.99] run function rpg:talk_villager/talk
+execute as @a[scores={talk_sneak_tick=1..}] at @s if entity @e[tag=talk_can,tag=!talk_finish,limit=1,sort=nearest,distance=..4.99] run function rpg:talk_villager/talk
 ##############################################
     #スニーク検知用を0..2に納める
-scoreboard players remove @a[scores={talk_villager=2..}] talk_villager2 1
+scoreboard players remove @a[scores={talk_sneak_tick=2..}] talk_sneak_now 1
     #スニークしていなかったら最寄りの村人の"talk_finish"タグを外してもう一度喋れるようにする
-execute if entity @a[scores={talk_villager2=..0}] run tag @e[tag=talk_finish] remove talk_finish
+execute if entity @a[scores={talk_sneak_now=..0}] run tag @e[tag=talk_finish] remove talk_finish
     #スニークしていなかったらスコアをリセット
-scoreboard players reset @a[scores={talk_villager2=..0}] talk_villager
-scoreboard players reset @a[scores={talk_villager2=..0}] talk_villager2
+scoreboard players reset @a[scores={talk_sneak_now=..0}] talk_sneak_tick
+scoreboard players reset @a[scores={talk_sneak_now=..0}] talk_sneak_now
 
 #村人から離れると名前に切替
 execute as @e[tag=talk_name_different] at @s unless entity @a[distance=..5] run function rpg:talk_villager/talk_reset

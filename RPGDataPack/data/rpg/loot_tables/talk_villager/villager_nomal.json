@@ -2,7 +2,4 @@
 	{"type": "item","name": "minecraft:stone","weight": 1,"functions": [{"function": "minecraft:set_name","name": "やぁ"}]},
 	{"type": "item","name": "minecraft:stone","weight": 1,"functions": [{"function": "minecraft:set_name","name": "何か用かい？"}]},
 	{"type": "item","name": "minecraft:stone","weight": 1,"functions": [{"function": "minecraft:set_name","name": "頼みごとを聞いてくれるか？"}]}
-			]
-		}
-	]
-}
+]}]}
