@@ -14,7 +14,7 @@
             "bypasses_invulnerability": false,
             "bypasses_magic": false,
             "source_entity": {
-              "nbt":"{Tags:[\"conbut_mob\"]}"
+             "nbt": "{Tags:[conbut_mob]}"
             }
           }
         }

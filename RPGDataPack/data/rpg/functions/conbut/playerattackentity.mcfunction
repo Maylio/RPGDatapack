@@ -7,5 +7,3 @@ tag @s add attacker
 tag @e[tag=conbut_mob,nbt={HurtTime:10s}] add defender
 #ダメージ計算を実行
 function rpg:conbut/conbut_calculation
-#プレイヤーから進捗をはく奪
-advancement revoke @s only rpg:playerattackentity

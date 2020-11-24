@@ -97,11 +97,19 @@ scoreboard players operation #damage _ *= #100 _
     execute if entity @e[tag=defender,type=player] if score #Health _ matches ..0 run kill @s
     #最大HPが変更された状態で即時回復を掛けると最大Hpをもとに戻してもHPが減ったままになる
     execute if entity @e[tag=defender,type=player] run effect give @s instant_health 1 200 true
+    #ダメージを受けた演出
+    effect give @e[tag=defender,type=player] instant_damage 1 32 true
+    #ダメージを受けたプレイヤーに2tick待たせるためにタグ付与
+    execute as @e[tag=defender,type=player] run tag @s add conbut_wait_tick
+
+#タグはく奪
+tag @e[tag=defender,type=!player] remove defender
+tag @e[tag=attacker] remove attacker
 
 scoreboard players set #10000 _ 10000
 scoreboard players operation #damage _ /= #10000 _
 tellraw @a [{"text":"軽減割合:"},{"score":{"name":"#perce","objective":"_"}},{"text":"％"}]
-tellraw @a [{"text":"ダメージ:"},{"score":{"name":"#damage","objective":"_"}}]    
+tellraw @a [{"text":"ダメージ:"},{"score":{"name":"#damage","objective":"_"}}]
 
 #スコアリセット
 scoreboard players reset #2
