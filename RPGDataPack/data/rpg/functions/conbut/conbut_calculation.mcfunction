@@ -118,6 +118,7 @@ scoreboard players reset #2000
 scoreboard players reset #25
 scoreboard players reset #100
 scoreboard players reset #400
+scoreboard players reset #10000
 scoreboard players reset #sp_defense
 scoreboard players reset #damage
 scoreboard players reset #damage_calc

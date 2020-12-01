@@ -3,6 +3,7 @@
    "rpg:talk_villager/talk_hub",
    "rpg:trade_villager/trade_hub",
    "rpg:conbut/conbut_hub",
-   "rpg:mobs/mobs_hub"
+   "rpg:mobs/mobs_hub",
+   "rpg:backpack/backpack_hub"
   ]
 }
