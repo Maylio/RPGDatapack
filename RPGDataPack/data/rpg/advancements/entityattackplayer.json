@@ -14,7 +14,7 @@
             "bypasses_invulnerability": false,
             "bypasses_magic": false,
             "source_entity": {
-             "nbt": "{Tags:[conbut_mob]}"
+             "nbt": "{Tags:[conbat_mob]}"
             }
           }
         }
@@ -22,6 +22,6 @@
     }
   },
   "rewards": {
-    "function": "rpg:conbut/entityattackplayer"
+    "function": "rpg:conbat/entityattackplayer"
   }
 }

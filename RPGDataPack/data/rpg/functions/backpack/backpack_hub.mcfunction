@@ -1,6 +1,8 @@
+##注意##このファンクションには問題が複数残っていますが、対処の難易度が高く、対処すると他の部分に支障がでる可能性があるので更新はされません
+
 #"slot_move_hub"でスロットを動かしているか検知する
-execute as @a[scores={ui_shift_toggle=0,ui_shift=2..},tag=!slot_move,tag=!slot_move_first] run function rpg:right_click_ui/slot_move/slot_get
-execute as @a[scores={ui_shift_toggle=0,ui_shift=2..},tag=!slot_move] run function rpg:right_click_ui/slot_move/slot_move_hub
+execute as @a[scores={ui_shift=2..},tag=!slot_move,tag=!slot_move_first] run function rpg:right_click_ui/slot_move/slot_get
+execute as @a[scores={ui_shift=2..},tag=!slot_move] run function rpg:right_click_ui/slot_move/slot_move_hub
 
 #バックパックを持っていなかったらスコアをリセット
 execute as @a unless entity @s[nbt={SelectedItem:{tag:{backpack:true}}}] run scoreboard players reset @s ui_shift
@@ -22,7 +24,6 @@ execute as @a[tag=clear_backpack] at @s run function rpg:backpack/save
 execute as @a[tag=ui_opener] unless entity @s[nbt={SelectedItem:{tag:{backpack:true}}}] at @s run function rpg:backpack/clear_backpack
 execute as @a[tag=look_move,tag=ui_opener] at @s run function rpg:backpack/clear_backpack
 execute as @a[tag=slot_move,tag=ui_opener] at @s run function rpg:backpack/clear_backpack
-
 
 #タグはく奪
 tag @a[tag=look_move] remove look_move

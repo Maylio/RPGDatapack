@@ -1,10 +1,10 @@
 #ステータス取得
     #攻撃力
-    execute as @s store result score #damage1 _ run scoreboard players get @s conbut_damage
-    execute as @e[tag=union_target_slime] store result score #damage2 _ run scoreboard players get @s conbut_damage
+    execute as @s store result score #damage1 _ run scoreboard players get @s conbat_damage
+    execute as @e[tag=union_target_slime] store result score #damage2 _ run scoreboard players get @s conbat_damage
     #防御力
-    execute as @s store result score #defense1 _ run scoreboard players get @s conbut_defense
-    execute as @e[tag=union_target_slime] store result score #defense2 _ run scoreboard players get @s conbut_defense
+    execute as @s store result score #defense1 _ run scoreboard players get @s conbat_defense
+    execute as @e[tag=union_target_slime] store result score #defense2 _ run scoreboard players get @s conbat_defense
     #体力
     execute as @s store result score #health1 _ run data get entity @s Health
     execute as @e[tag=union_target_slime] store result score #health2 _ run data get entity @s Health
@@ -34,7 +34,7 @@ scoreboard players operation #size1 _ += #size2 _
 
 #合体後
     #召喚
-    summon minecraft:slime ~ ~ ~ {Tags:["conbut_mob","dream_slime","slime_inc","unioned_slime","union_slime"],PortalCooldown:1,Size:0}
+    summon minecraft:slime ~ ~ ~ {Tags:["conbat_mob","dream_slime","slime_inc","unioned_slime","union_slime"],PortalCooldown:1,Size:0}
     #代入
     execute as @e[tag=unioned_slime] store result entity @s Size int 1 run scoreboard players get #size1 _
     execute as @e[tag=unioned_slime] store result entity @s PortalCooldown int 1 run scoreboard players get #damage1 _

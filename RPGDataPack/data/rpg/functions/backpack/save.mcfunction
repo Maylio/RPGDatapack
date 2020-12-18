@@ -1,3 +1,5 @@
+#もしも実行者の近くにバックパックがアイテムとしてある時、削除する
+kill @e[type=item,nbt={Item:{tag:{backpack:true}},Age:2s},limit=1,sort=nearest]
 #プレイヤーに拾わせる用のバックパックを召喚
 summon item ~ ~ ~ {Tags:["backpack"],Item:{id:"minecraft:saddle",Count:1b,tag:{backpack:true}}}
 #実行者とスコアが同じロバのチェストの中身をアイテムのタグに代入
