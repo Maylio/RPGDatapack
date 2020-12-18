@@ -1,4 +1,5 @@
-
+#プレイヤーの方を向かせる
+execute as @s at @s facing entity @p eyes run tp @s ~ ~ ~ ~ 0
 #見てる座標をMotionに入れるために、0,0,0から見てる方向の前に"pos"を召喚
 execute as @s at @s facing entity @p eyes positioned 0 0 0 rotated ~ 0 run summon area_effect_cloud ^ ^ ^1 {Duration:1,Radius:0f,Tags:[pos]}
 #"pos"のX座標を10倍にしてX軸のMotionに代入

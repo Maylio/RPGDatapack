@@ -1,15 +1,15 @@
 #################################################################################################
 #攻撃力
-    #MOBのポータルのクールダウンの上2ケタを"conbut_damage"と"mob_PortalCooldowntick"に代入
-    execute store result score @s conbut_damage run data get entity @s PortalCooldown 0.0001
+    #MOBのポータルのクールダウンの上2ケタを"conbat_damage"と"mob_PortalCooldowntick"に代入
+    execute store result score @s conbat_damage run data get entity @s PortalCooldown 0.0001
     execute store result score #mob_PortalCooldowntick _ run data get entity @s PortalCooldown
-    tellraw @a [{"text":"攻撃力:"},{"score":{"name":"@s","objective":"conbut_damage"}}]
+    tellraw @a [{"text":"攻撃力:"},{"score":{"name":"@s","objective":"conbat_damage"}}]
 
     #計算
         #計算用に100を用意
         scoreboard players set #10000 _ 10000
-        #"mob_damage"のダミープレイヤーに"conbut_damage"の値を代入
-        scoreboard players operation #mob_damage _ = @s conbut_damage
+        #"mob_damage"のダミープレイヤーに"conbat_damage"の値を代入
+        scoreboard players operation #mob_damage _ = @s conbat_damage
         #"mob_damage"を10000倍に
         scoreboard players operation #mob_damage _ *= #10000 _
         #"mob_PortalCooldowntick"から"mob_power"を減算
@@ -26,16 +26,16 @@
 
 #################################################################################################
 #防御力
-    #MOBのポータルのクールダウンの下2ケタを"conbut_defense"と"mob_PortalCooldowntick"に代入
-    execute store result score @s conbut_defense run data get entity @s PortalCooldown 0.01
+    #MOBのポータルのクールダウンの下2ケタを"conbat_defense"と"mob_PortalCooldowntick"に代入
+    execute store result score @s conbat_defense run data get entity @s PortalCooldown 0.01
     execute store result score #mob_PortalCooldowntick _ run data get entity @s PortalCooldown
-    tellraw @a [{"text":"防御力:"},{"score":{"name":"@s","objective":"conbut_defense"}}]
+    tellraw @a [{"text":"防御力:"},{"score":{"name":"@s","objective":"conbat_defense"}}]
 
     #計算
         #計算用に1を用意
         scoreboard players set #100 _ 100
-        #"mob_defense"のダミープレイヤーに"conbut_defense"の値を代入
-        scoreboard players operation #mob_defense _ = @s conbut_defense
+        #"mob_defense"のダミープレイヤーに"conbat_defense"の値を代入
+        scoreboard players operation #mob_defense _ = @s conbat_defense
         #"mob_defense"を100倍に
         scoreboard players operation #mob_defense _ *= #100 _
         #"mob_PortalCooldowntick"から"mob_defense"を減算

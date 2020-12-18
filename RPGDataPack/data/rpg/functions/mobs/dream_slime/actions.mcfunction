@@ -18,23 +18,6 @@ tp @e[type=slime,tag=!slime_inc] ~ ~-1000 ~
     execute as @e[tag=dream_slime,nbt={NoAI:true}] at @s unless entity @a[distance=..10] run data modify entity @s NoAI set value false
 
 
-#飛び掛かり
-    #ダメージ
-        #"action_jumping"がついているときに半径0.5マス以内にプレイヤーが居ればダメージ
-        execute as @e[tag=dream_slime,tag=action_jumping] at @s if entity @a[distance=0..1.8] run tag @s add attacker
-        execute as @e[tag=dream_slime,tag=action_jumping] at @s as @a[distance=0..1.8] run tag @s add defender
-        execute as @e[tag=dream_slime,tag=action_jumping] at @s as @a[distance=0..1.8] run function rpg:conbut/conbut_calculation
-        #"action_jumping"がついているときに半径0.5マス以内にプレイヤーが地面に付いたことにする
-        execute as @e[tag=dream_slime,tag=action_jumping] at @s if entity @a[distance=0..1.8] run tag @s add OnGround
-    #終了処理
-        #地面についていたら"action_jump"タグを外して倍率をもとに戻す
-        execute as @e[tag=dream_slime,tag=action_jumping,scores={AI_tick=0..149}] at @s unless block ~ ~-0.001 ~ air run tag @s add OnGround
-            #"action_jumping"タグを外す
-            tag @e[tag=dream_slime,tag=action_jumping,tag=OnGround] remove action_jumping
-            #"OnGround"タグを外す
-            tag @e[tag=dream_slime,tag=OnGround] remove OnGround
-
-
 
 #合体
     #もしHPが5以下の場合合体用のタグを付与
