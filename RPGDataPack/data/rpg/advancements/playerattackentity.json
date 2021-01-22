@@ -1,0 +1,15 @@
+{
+    "criteria": {
+      "playerattackentity": {
+        "trigger": "minecraft:player_hurt_entity",
+        "conditions": {
+          "entity": {
+            "nbt": "{Tags:[conbat_mob]}"
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "rpg:conbat/playerattackentity"
+    }
+  }
