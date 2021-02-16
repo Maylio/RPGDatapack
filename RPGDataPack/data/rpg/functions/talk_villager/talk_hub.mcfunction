@@ -1,0 +1,14 @@
+#村人テンプレート
+#summon villager ~ ~1 ~ {VillagerData:{profession:farmer,level:99,type:plains},Invulnerable:1b,CustomNameVisible:1b,Tags:["villager_can_talk","villager_quest_giver","villager_trader"],CustomName:'{"text":"村人名前","color":"yellow"}',Inventory:[{id:"minecraft:stone",Count:1b,tag:{Villager_ID:717,VillagerData:{profession:farmer,level:99,type:plains},display:{Name:'{"text":"村人名前","color":"yellow","bold":true}'}}},{id:"minecraft:stone",Count:1b,tag:{Offers:{Recipes:[{buy:{id:"minecraft:air",Count:1b,tag:{display:{Name:'{"text":"","color":"yellow"}'}}},sell:{id:"minecraft:paper",Count:1b,tag:{display:{Name:'{"text":"依頼書"}'},quest:true}},rewardExp:0b,maxUses:9999999}]}}},{id:"minecraft:stone",Count:1b,tag:{Offers:{Recipes:[{buy:{id:"minecraft:minecart",Count:1b,tag:{display:{Name:'{"text":"お財布","color":"yellow"}'}}},sell:{id:"minecraft:apple",Count:1b,tag:{display:{Name:'{"text":"取引アイテム1名前"}',Lore:['{"text":"値段：100","color":"light_purple"}']},product:true,trade_price:100,success_word:"取引1成功セリフ",fail_word:"取引1失敗セリフ",give:{id:"minecraft:apple",Count:1b,tag:{Item_ID:717,display:{Name:'{"text":"獲得アイテム1Name"}',Lore:['{"text":"獲得アイテム1Lore","color":"purple"}']}}}}},rewardExp:0b,maxUses:9999999},{buy:{id:"minecraft:minecart",Count:1b,tag:{display:{Name:'{"text":"お財布","color":"yellow"}'}}},sell:{id:"minecraft:apple",Count:5b,tag:{display:{Name:'{"text":"取引アイテム2名前"}',Lore:['{"text":"値段：1000","color":"light_purple"}']},product:true,trade_price:1000,success_word:"取引2成功セリフ",fail_word:"取引2失敗セリフ",give:{id:"minecraft:apple",Count:5b,tag:{display:{Name:'{"text":"獲得アイテム2Name"}',Lore:['{"text":"獲得アイテム2Lore","color":"purple"}']}}}}},rewardExp:0b,maxUses:9999999}]}}},{id:"minecraft:stone",Count:1b,tag:{display:{Name:'{"text":"セリフA","color":"dark_purple","bold":true,"underlined":true}'}}},{id:"minecraft:stone",Count:1b,tag:{display:{Name:'{"text":"セリフB","color":"dark_purple","bold":true,"underlined":true}'}}},{id:"minecraft:stone",Count:1b,tag:{display:{Name:'{"text":"セリフC","color":"dark_purple","bold":true,"underlined":true}'}}}]}
+
+#村人に話しかけたプレイヤーが見てる村人を検知する
+execute as @a[scores={talk_right=1..}] at @s positioned ~ ~1.5 ~ run function rpg:talk_villager/detect_talker
+
+#近くにプレイヤーが居ない村人の名前をもとに戻す
+execute as @e[tag=villager_can_talk,tag=villager_name_changed] at @s unless entity @a[distance=..5] run data modify entity @s CustomName set from entity @s Inventory[0].tag.display.Name
+execute as @e[tag=villager_can_talk,tag=villager_name_changed] at @s unless entity @a[distance=..5] run tag @s remove villager_name_changed
+#もし名前が見えて無くて、近くにプレイヤーが居た場合表示する
+execute as @e[tag=villager_can_talk] unless data entity @s {CustomNameVisible:1b} at @s if entity @a[distance=..10] run data merge entity @s {CustomNameVisible:1b}
+execute as @e[tag=villager_can_talk] if data entity @s {CustomNameVisible:1b} at @s unless entity @a[distance=..10] run data merge entity @s {CustomNameVisible:0b}
+#スコアリセット
+scoreboard players reset @a talk_right
